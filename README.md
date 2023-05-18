@@ -1,6 +1,6 @@
-# **Avaliação Sprint 2 - Programa de Bolsas Compass UOL / AWS e UFU**
+# **Avaliação Sprint 3 - Programa de Bolsas Compass UOL / AWS e UFU**
 
-Avaliação da segunda sprint do programa de bolsas Compass UOL para formação em machine learning para AWS.
+Avaliação da terceira sprint do programa de bolsas Compass UOL para formação em machine learning para AWS.
 
 ## **Membros da equipe**
 
@@ -11,7 +11,7 @@ Avaliação da segunda sprint do programa de bolsas Compass UOL para formação 
 
 ## **Sobre o repositório**
 
-Este repositório possui uma solução para a segunda avaliação do curso machine learning para AWS da Compass UOL. O objetivo é a implementação de um sistema que funciona como intermediário de uma API pública. A API escolhida para o projeto foi a [HandWrytten](https://any-api.com/handwrytten_com/handwrytten_com/docs/API_Description). Foram abordadas as tecnologias Node.js, Express, Handlebars, dentre outras. Além disso, foram adotadas boas práticas e padrões de projetos web para a execução da atividade.
+Este repositório possui uma solução para a terceira avaliação do curso machine learning para AWS da Compass UOL. O objetivo é a implementação de um sistema que funciona como intermediário de uma API pública. A API escolhida para o projeto foi a [HandWrytten](https://any-api.com/handwrytten_com/handwrytten_com/docs/API_Description). Foram abordadas as tecnologias Node.js, Express, Handlebars, dentre outras. Além disso, foram adotadas boas práticas e padrões de projetos web para a execução da atividade.
 
 ## **Início rápido**
 
@@ -23,8 +23,9 @@ Para executar o código localmente:
 1. Clone o repositório
 2. Abra o terminal no diretório e realize o checkout para a branch `equipe-2`
 3. Instale as dependencias do node utilizando o comando `npm install`
-3. Execute o projeto node utilizando o comando `npm run dev`
-4. Abra `http://localhost:8000/` que será exibido no terminal
+4. Execute o projeto node utilizando o comando `npm run dev-windows` para Windows ou `npm run dev`para Linux
+Para executar apenas o backend ou frontend adicione o nome após o comando como o exemplo: `npm run dev-windows-backend` ou `npm run dev-windows-frontend`
+5. Abra `http://localhost:8080/` para visualizar o frontend ou verifique o backend acessando `http://localhost:5000/`
 
 >**Obs:** Verifique se a versão do node instalada é igual ou superior a v18.16.0. Lembre-se de configurar as variáveis de ambiente.
 
