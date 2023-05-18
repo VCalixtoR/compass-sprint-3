@@ -23,9 +23,10 @@ Para executar o código localmente:
 1. Clone o repositório
 2. Abra o terminal no diretório e realize o checkout para a branch `equipe-2`
 3. Instale as dependencias do node utilizando o comando `npm install`
-4. Execute o projeto node utilizando o comando `npm run dev-windows` para Windows ou `npm run dev`para Linux
+4. Insira os arquivos de ambiente(`.env`) necessários para o backend e/ou frontend
+5. Execute o projeto node utilizando o comando `npm run dev-windows` para Windows ou `npm run dev`para Linux
 Para executar apenas o backend ou frontend adicione o nome após o comando como o exemplo: `npm run dev-windows-backend` ou `npm run dev-windows-frontend`
-5. Abra `http://localhost:8080/` para visualizar o frontend ou verifique o backend acessando `http://localhost:5000/`
+6. Abra `http://localhost:8080/` para visualizar o frontend ou verifique o backend acessando `http://localhost:5000/`
 
 >**Obs:** Verifique se a versão do node instalada é igual ou superior a v18.16.0. Lembre-se de configurar as variáveis de ambiente.
 
