@@ -1,0 +1,18 @@
+{
+  "name": "spr3backend",
+  "version": "1.0.0",
+  "description": "backend folder for sprint 3 from equipe 2",
+  "main": "/src/js/app.js",
+  "scripts": {
+    "dev-windows": "set NODE_ENV=development && nodemon src/js/app.js",
+    "dev": "NODE_ENV=development nodemon src/js/app.js",
+    "prod": "NODE_ENV=production node src/js/app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "custom-env": "^2.0.2",
+    "express": "^4.18.2"
+  }
+}

@@ -1,9 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const Constants = require('./../js/constants');
-
-// needed because older versions of node does not have fetch as a default method
-const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 
 // fetches a request with exception handling
 async function baseRequestHandling(options, base_url, endpoint){
@@ -34,39 +30,33 @@ async function baseRequestHandling(options, base_url, endpoint){
   }
 }
 
-// get latest comic
-router.get('/atual', async (req, res) => {
-    
-  let atual = true;  
+// get comic from xkcd given its id
+router.get('/', async (req, res) => {
+  
+  if(!req || !req.query || !req.query.comicId){
+    res.status(422).send('Missing comicId param in query');
+  }
+  let comicId = req.query.comicId;
+  
   let comic = await baseRequestHandling({
     method: 'GET',
     headers: {
       'Accept': 'application/json',
-    }},Constants.BASE_XKCD_URL,'info.0.json');
+    }}, process.env.BASE_XKCD_URL,`${comicId}/info.0.json`);
   
-  if(comic){
-    res.render('cards', { comic, atual });
-  } else {
-    res.render('cards', {});
-  }
+  res.status(200).send(comic);
 });
 
-// get comics from a category given its id
-router.get('/', async (req, res) => {
-    
-  const search_comic = req.query;
+// get latest comic
+router.get('/atual', async (req, res) => {
   
   let comic = await baseRequestHandling({
     method: 'GET',
     headers: {
       'Accept': 'application/json',
-    }},Constants.BASE_XKCD_URL,`${search_comic.comicId}/info.0.json`);
+    }},process.env.BASE_XKCD_URL,'info.0.json');
   
-  if(comic){
-    res.render('cards', { comic, search_comic });
-  } else {
-    res.render('cards', {});
-  }
+  res.send(comic);
 });
 
 module.exports = router;
