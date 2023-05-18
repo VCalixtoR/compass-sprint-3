@@ -34,38 +34,36 @@ async function baseRequestHandling(options, base_url, endpoint){
   }
 }
 
-// post to render a card with a given id
-router.post('/', async (req, res) => {
-
-  const search = req.body;
-
-  let data = await baseRequestHandling({
-    method: 'POST',
-    body: JSON.stringify(search), 
+// get latest comic
+router.get('/atual', async (req, res) => {
+    
+  let atual = true;  
+  let comic = await baseRequestHandling({
+    method: 'GET',
     headers: {
       'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    }}, Constants.BASE_HANDWRYTTEN_URL, 'v1/cards/view'); 
+    }},Constants.BASE_XKCD_URL,'info.0.json');
   
-  if(data){
-    res.render('cards', { data, search });
+  if(comic){
+    res.render('cards', { comic, atual });
   } else {
     res.render('cards', {});
   }
 });
 
-// get cards from a category given its id
+// get comics from a category given its id
 router.get('/', async (req, res) => {
-  const search_category = req.query;
-
-  let category = await baseRequestHandling({
+    
+  const search_comic = req.query;
+  
+  let comic = await baseRequestHandling({
     method: 'GET',
     headers: {
-      'Accept': 'application/json'
-    }}, Constants.BASE_HANDWRYTTEN_URL, `v1/cards/list?category_id=${search_category.category_id}`);
+      'Accept': 'application/json',
+    }},Constants.BASE_XKCD_URL,`${search_comic.comicId}/info.0.json`);
   
-  if(category){
-    res.render('cards', { category, search_category });
+  if(comic){
+    res.render('cards', { comic, search_comic });
   } else {
     res.render('cards', {});
   }

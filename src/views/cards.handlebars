@@ -1,9 +1,12 @@
 <div id="top-container" class="container-fluid">
-  <h1 id="main-title" class="text-center">Handwrytten API - cartões à sua escolha</h1>
-  <p id="main-subtitle" class="text-center">Esta é a API Handwrytten para enviar cartões escritos com a caligrafia de sua escolha. Usando esta API, você pode enviar cartões para usuários. </p>
-  <form id="search-form" class="form-inline" action="/card"  method="post">
+  <h1 id="main-title" class="text-center">XKCD API - tirinhas</h1>
+  <p id="main-subtitle" class="text-center">
+    O xkcd autodenomina-se "um webcomic de romance, sarcasmo, matemática e linguagem": 
+    os temas vão de declarações sobre a vida e o amor a brincadeiras internas de ciência ou matemática. Alguns são de um humor simples ou com referências a cultura pop.
+  </p>
+  <form id="search-form" class="form-inline" action="/card"  method="get">
     <div class="form-group col-md-10">
-      <input type="text" class="form-control" id="card_id" value="" name="card_id" placeholder="Digite o ID do cartão">
+      <input type="text" class="form-control" id="comicId" value="" name="comicId" placeholder="Digite o ID da comic">
     </div>
     <div class="col-md-2">
       <button type="submit" class="btn btn-primary">Procurar</button>
@@ -14,38 +17,27 @@
   <div id="jobs-container" class="container">
     <div class="row">
       <div class="col-md-12">
-        {{#if search}}
-          <h2 id="job-list-title">Cartão {{search.card_id}}</h2>
-        {{else if category}}
-          <h2 id="job-list-title">Cartões disponíveis</h2>
+        {{#if search_comic}}
+          <h2 id="job-list-title">Comic {{search_comic.comicId}}</h2>
+        {{else if atual}}
+          <h2 id="job-list-title">Comic do Mês</h2>
         {{else}}
           <h2 id="job-list-title">Digite um código válido</h2>
         {{/if}}
-        <!-- search card by id -->
-        <ul id="job-list" class="list-group">
-          {{#if data}}
-            <li class="list-group-item new-job">
-              <img src="{{data.card.cover}}" alt="Cover">
-              <h2>{{data.card.name}}</h2>
-              <p>Preço: ${{data.card.price}}</p>
-              <p>Tamanho: {{data.card.details_size}}</p>
-              <p>Autor: {{data.card.details_author}}</p>
-            </li>
-          {{/if}}
-        </ul>
+
         <!-- search the first four cards by category -->
         <ul id="job-list" class="list-group">
-          {{#if category}}
-            {{#each (limit category.cards 4)}}
+          {{#if comic}}
+
               <li class="list-group-item new-job">
-              <img src="{{this.cover}}" alt="Cover">
-              <h2>{{this.name}}</h2>
-              <p>Preço: ${{this.price}}</p>
-              <p>ID cartão: {{this.id}}</p>
-              <p>Tamanho: {{this.details_size}}</p>
-              <p>Autor: {{this.details_author}}</p>
+              <img src="{{comic.img}}" alt="Cover">
+              <h2>{{comic.title}}</h2>
+              <p>ID: {{comic.num}}</p>
+              <p>Ano: {{comic.year}}</p>
+              <p>Mês: {{comic.month}}</p>
+              <p>Descrição: {{comic.alt}}</p>
               </li>
-            {{/each}}
+
           {{/if}}
         </ul>
       </div>
